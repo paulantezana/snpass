@@ -6,6 +6,12 @@
     // explode('/', explode('?' ,$_SERVER['REQUEST_URI'])[0])
     $virtualPath = '/' . ltrim(substr($requestUri, strlen($scriptName)), '/');
 
+    var_dump($scriptName);
+    echo PHP_EOL;
+    var_dump($requestUri);
+    echo PHP_EOL;
+    var_dump($virtualPath);
+
     define('URI', $requestUri);
     define('URL_PATH', $scriptName);
     define('URL',$virtualPath);
@@ -20,3 +26,4 @@
     define('SESS_MENU','SkyMenu');
 
     define('APP_NAME','SnPass');
+    define('APP_AUTHOR','SnPass');

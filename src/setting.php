@@ -19,4 +19,4 @@
     define('SESS_DATA','SkyData');
     define('SESS_MENU','SkyMenu');
 
-    define('APP_NAME','SkyPass');
+    define('APP_NAME','SnPass');

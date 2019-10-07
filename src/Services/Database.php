@@ -11,7 +11,7 @@ class Database
             PDO::ATTR_CASE => PDO::CASE_LOWER
         );
 
-        $this->connection = new PDO('mysql:host=localhost;dbname=skynetpass', 'root', '', $options);
+        $this->connection = new PDO('mysql:host=localhost;dbname=paulpvad_snpass', 'paulpvad_snpass', 'CSs#$%1@.651s2', $options);
         $this->connection->exec("SET CHARACTER SET UTF8");
     }
     public function getConnection() : PDO

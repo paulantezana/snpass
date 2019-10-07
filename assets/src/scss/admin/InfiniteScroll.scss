@@ -1,0 +1,4 @@
+.InfiniteScroll {
+    height: calc(100vh - #{$headerHeight + 185});
+    overflow: auto;
+}

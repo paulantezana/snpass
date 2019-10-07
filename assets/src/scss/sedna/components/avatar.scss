@@ -1,0 +1,5 @@
+@mixin SnAvatar {
+    .#{$classPrefix}Avatar{
+        border-radius: 100%;
+    }
+}

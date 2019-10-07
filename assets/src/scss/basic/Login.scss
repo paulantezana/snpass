@@ -1,0 +1,16 @@
+.Login{
+  width: 350px;
+  padding: 1rem;
+  .SnForm-input{
+      background: var(--snColorBgAlt);
+  }
+  .SnFlex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a{
+      text-decoration: none;
+      color: var(--snColor1);
+    }
+  }
+}

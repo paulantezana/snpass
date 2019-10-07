@@ -1,0 +1,23 @@
+@mixin SnBase(){
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+
+    ::selection{
+        background: var(--snColor1);
+        color: var(--snColor1Inverse);
+    }
+
+    body{
+        font-family: sans-serif;
+        height: 100vh;
+    }
+
+    video,img{
+        max-width : 100%;
+        height    : auto;
+        display: inline-block;
+    }
+}

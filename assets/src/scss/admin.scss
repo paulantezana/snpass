@@ -1,0 +1,44 @@
+@import "sedna/sedna";
+@import "_postConfig";
+
+
+// Base
+@include SnBase();
+@import "_base";
+
+// Components
+@include SnMenu();
+@include SnBtn();
+@include SnBtns();
+@include SnAlert();
+@include SnCard();
+@include SnForm();
+@include SnAvatar();
+@include SnGrid();
+@include SnLoading();
+@include SnMargin();
+@include SnModal();
+@include SnTable();
+
+@import "admin/Layout";
+@import "admin/Header";
+@import "admin/HeaderMenu";
+@import "admin/AsideMenu";
+@import "admin/SnToolbar";
+
+@import "admin/InfiniteScroll";
+@import "admin/CustomerRow";
+@import "admin/PassCustomer";
+@import "admin/PassPassword";
+
+@import "admin/Tooltip";
+@import "admin/Pagination";
+@import "admin/SnMessage";
+@import "admin/SnSwitch";
+@import "admin/UserRole";
+@import "admin/desktop";
+
+.hidden{
+  opacity: 0;
+  pointer-events: none;
+}

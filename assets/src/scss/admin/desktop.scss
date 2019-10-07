@@ -1,0 +1,40 @@
+.avatarList{
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  &-item{
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
+  &-name{
+    overflow: hidden;
+    max-width: 70px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  .SnAvatar{
+    width: 32px;
+    height: 32px;
+    background: var(--snColorBg);
+    position: relative;
+    margin-right: 8px;
+    &-counter{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-radius: 100%;
+    }
+  }
+  &-item:hover{
+    color: var(--snColor1);
+    .SnAvatar-counter{
+      background: var(--snColor1);
+      color: var(--snColor1Inverse);
+    }
+  }
+}

@@ -1,0 +1,25 @@
+@mixin SnCard {
+    .#{$classPrefix}Card{
+        display: flex;
+        flex-direction: column;
+        background: var(--snColorBgAlt);
+        border: 1px solid var(--snColorBorder);
+        color: var(--snColorText);
+        &.hoverable{
+            &:hover{
+                box-shadow: 0 0.5rem 1rem -0.5rem #CCC;
+            }
+        }
+        &-cover{
+    
+        }
+        &-title,
+        &-description{
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+        &-body{
+            padding: 1rem;
+        }
+    }    
+}

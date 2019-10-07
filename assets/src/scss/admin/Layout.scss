@@ -1,0 +1,67 @@
+$asideWidth: 220px;
+$asideSmallWidth: 64px;
+$headerHeight: 56px;
+
+.AdminLayout{
+  &-main,
+  &-header{
+    transition: margin-left .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    @include from(l){
+      margin-left: $asideWidth;
+    }
+  }
+
+  &-header{
+    line-height: $headerHeight;
+  }
+
+  &-aside{
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: -100%;
+    z-index: 10;
+    transition: left .4s cubic-bezier(0.075, 0.82, 0.165, 1);
+    width: 100%;
+    @include from(l){
+      width: $asideWidth;
+      left: 0;
+    }
+  }
+}
+
+.SnContent{
+  padding: 1rem;
+}
+
+.SnContentAside{
+  display: grid;
+  grid-template-columns: 1fr;
+  @include from(l){
+    grid-template-columns: 1fr 2fr;
+  }
+  height: calc(100vh - 60px);
+  padding: 1rem;
+  grid-gap: 1rem;
+}
+
+.AsideMenu-is-show{
+  @include to(l){
+    .AdminLayout{
+      &-aside{
+        left: 0;
+      }
+    }
+  }
+  @include from(l){
+    .AdminLayout{
+      &-main,
+      &-header{
+        margin-left: $asideSmallWidth;
+      }
+      &-aside{
+        width: $asideSmallWidth;
+      }
+    }
+  }
+}

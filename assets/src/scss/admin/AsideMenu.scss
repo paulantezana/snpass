@@ -1,0 +1,180 @@
+$hoverMenuBg: var(--snColor1);
+$hoverMenuColor: white;
+$menuBorderColor: var(--snColorDark);
+
+.AsideMenu {
+  @extend %snList;
+  height: calc(100vh - #{$headerHeight});
+  background: var(--snColorDarker);
+  &-container{
+    background: var(--snColorDarker);
+    color: var(--snColorDarkInverse);
+  }
+  li {
+    position: relative;
+  }
+  &-item,
+  a {
+    color: var(--snColorDarkInverse);
+    text-decoration: none;
+    line-height: 2.5rem;
+    padding: 0 8px 0 20px;
+    display: flex;
+    align-items: center;
+    [class*="icon-"] {
+      margin-right: 8px;
+    }
+    > span {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &:hover {
+      background: $hoverMenuBg;
+      color: $hoverMenuColor;
+    }
+    .Toggle {
+      margin: 0 0 0 8px;
+    }
+  }
+}
+
+// Menu Aside wrrapper
+.AsideMenu-is-show {
+  @include to(l) {
+    .AsideMenu {
+      &-wrapper {
+        background: rgba(black, .5);
+      }
+      &-container {
+        width: $asideWidth;
+      }
+    }
+  }
+}
+
+// Sbmenu
+.AsideMenu {
+  ul {
+    @extend %snList;
+    background: var(--snColorDarkAlt);
+    a {
+      padding-left: 50px;
+    }
+  }
+}
+
+// Divider
+.AsideMenu {
+  &-divider {
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 700;
+  }
+}
+
+.AsideMenu-is-show {
+  @include from(l) {
+    .AsideMenu {
+      &-divider {
+        // border-bottom: 1px solid $menuBorderColor;
+        padding: 0;
+        font-size: 0;
+      }
+      > li {
+        > a {
+          justify-content: center;
+          padding-left: 0;
+          padding-right: 0;
+          > span {
+            position: absolute;
+            left: 100%;
+            top: 0;
+            text-align: left;
+            padding: 0 20px;
+            width: 220px;
+            background: $hoverMenuBg;
+            display: none;
+          }
+          .Toggle {
+            display: none;
+          }
+          [class*="icon-"] {
+            margin-right: 0;
+          }
+        }
+        > ul {
+          position: absolute;
+          top: 100%;
+          left: 100%;
+          width: 220px;
+          background: var(--snColorDarker);
+
+          display: none;
+          a {
+            padding: 0 20px;
+          }
+        }
+        &:hover {
+          > ul {
+            display: block;
+          }
+          > a span {
+            display: flex;
+          }
+          > a {
+            background: $hoverMenuBg;
+            color: $hoverMenuColor;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------------------
+// Aside Header
+.AsideHeader {
+  height: $headerHeight;
+  padding: 10px 20px;
+  border-bottom: 1px solid $menuBorderColor;
+}
+
+// Branding
+.Branding {
+  height: 100%;
+  &-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    color: var(--snColorDarkInverse);
+    text-decoration: none;
+    img {
+      max-width: 28px;
+      margin-right: 16px;
+    }
+  }
+  &-name {
+    font-weight: 500;
+  }
+}
+
+.AsideMenu-is-show {
+  @include from(l) {
+    .AsideHeader {
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+    .Branding {
+      &-img {
+        margin: 0;
+      }
+      &-name {
+        display: none;
+      }
+    }
+  }
+}

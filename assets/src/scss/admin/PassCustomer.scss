@@ -1,0 +1,29 @@
+.PassCustomer{
+  &-row{
+    padding: 7px 12px;
+  }
+  &-header{
+    h1{
+      margin-bottom: 0;
+      font-size: 18px;
+    }
+  }
+  &-options{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    align-items: center;
+  }
+  &-list{
+    position: relative;
+    .SnLoading{
+      position: absolute;
+      top: 50%;
+      left: calc(50% - 32px);
+      opacity: 0;
+      &.visible{
+        opacity: 1;
+      }
+    }
+  }
+}

@@ -1,6 +1,11 @@
+//const Service = {
+//    path: 'http://localhost/SkynetPass/admin',
+//    apiPath: 'http://localhost/SkynetPass/admin',
+//};
+
 const Service = {
-    path: 'http://localhost/SkynetPass/admin',
-    apiPath: 'http://localhost/SkynetPass/admin',
+    path: 'https://snpass.paulantezana.com/admin',
+    apiPath: 'hhttps://snpass.paulantezana.com/admin',
 };
 
 class RequestApi {

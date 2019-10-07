@@ -5,7 +5,7 @@
 
 const Service = {
     path: 'https://snpass.paulantezana.com/admin',
-    apiPath: 'hhttps://snpass.paulantezana.com/admin',
+    apiPath: 'https://snpass.paulantezana.com/admin',
 };
 
 class RequestApi {

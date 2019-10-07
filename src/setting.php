@@ -6,17 +6,11 @@
     // explode('/', explode('?' ,$_SERVER['REQUEST_URI'])[0])
     $virtualPath = '/' . ltrim(substr($requestUri, strlen($scriptName)), '/');
 
-    var_dump($scriptName);
-    echo PHP_EOL;
-    var_dump($requestUri);
-    echo PHP_EOL;
-    var_dump($virtualPath);
-
     define('URI', $requestUri);
-    define('URL_PATH', $scriptName);
+    define('URL_PATH', $scriptName === '/' ? '' : ('/'. trim($scriptName,'/')));
     define('URL',$virtualPath);
 
-    define('ROOT_DIR', $_SERVER["DOCUMENT_ROOT"] . URL_PATH);
+    define('ROOT_DIR', $_SERVER["DOCUMENT_ROOT"] . $scriptName);
     define('CONTROLLER_PATH', ROOT_DIR. '/src/Controllers');
     define('MODEL_PATH', ROOT_DIR. '/src/Models');
     define('VIEW_PATH', ROOT_DIR. '/src/Views');

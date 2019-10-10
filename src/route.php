@@ -18,18 +18,18 @@ define('ADMIN_ATH',[
     '/user/profile' => ['controller' => 'UserController', 'method' => 'profile'],
 
     // User routes
-    '/customer' => ['controller' => 'PassCustomerController', 'method' => 'index'],
+    '/folder' => ['controller' => 'PassFolderController', 'method' => 'index'],
     '/user' => ['controller' => 'UserController', 'method' => 'index'],
     '/role' => ['controller' => 'UserRoleController', 'method' => 'index'],
 
     '/report/general' => ['controller' => 'ReportController', 'method' => 'general'],
     '/report/summary' => ['controller' => 'ReportController', 'method' => 'summary'],
 
-    '/api/customer/id' => ['controller' => 'PassCustomerController', 'method' => 'id'],
-    '/api/customer/scroll' => ['controller' => 'PassCustomerController', 'method' => 'scroll'],
-    '/api/customer/create' => ['controller' => 'PassCustomerController', 'method' => 'create'],
-    '/api/customer/update' => ['controller' => 'PassCustomerController', 'method' => 'update'],
-    '/api/customer/delete' => ['controller' => 'PassCustomerController', 'method' => 'delete'],
+    '/api/passFolder/id' => ['controller' => 'PassFolderController', 'method' => 'id'],
+    '/api/passFolder/scroll' => ['controller' => 'PassFolderController', 'method' => 'scroll'],
+    '/api/passFolder/create' => ['controller' => 'PassFolderController', 'method' => 'create'],
+    '/api/passFolder/update' => ['controller' => 'PassFolderController', 'method' => 'update'],
+    '/api/passFolder/delete' => ['controller' => 'PassFolderController', 'method' => 'delete'],
 
     '/api/user/id' => ['controller' => 'UserController', 'method' => 'id'],
     '/api/user/create' => ['controller' => 'UserController', 'method' => 'create'],
@@ -37,29 +37,26 @@ define('ADMIN_ATH',[
     '/api/user/updatePassword' => ['controller' => 'UserController', 'method' => 'updatePassword'],
     '/api/user/delete' => ['controller' => 'UserController', 'method' => 'delete'],
 
-    '/api/user/role/id' => ['controller' => 'UserRoleController', 'method' => 'id'],
-    '/api/user/role/list' => ['controller' => 'UserRoleController', 'method' => 'list'],
-    '/api/user/role/create' => ['controller' => 'UserRoleController', 'method' => 'create'],
-    '/api/user/role/update' => ['controller' => 'UserRoleController', 'method' => 'update'],
-    '/api/user/role/delete' => ['controller' => 'UserRoleController', 'method' => 'delete'],
+    '/api/userRole/id' => ['controller' => 'UserRoleController', 'method' => 'id'],
+    '/api/userRole/list' => ['controller' => 'UserRoleController', 'method' => 'list'],
+    '/api/userRole/create' => ['controller' => 'UserRoleController', 'method' => 'create'],
+    '/api/userRole/update' => ['controller' => 'UserRoleController', 'method' => 'update'],
+    '/api/userRole/delete' => ['controller' => 'UserRoleController', 'method' => 'delete'],
 
     '/api/authorization/save' => ['controller' => 'AppAuthorizationController', 'method' => 'save'],
     '/api/authorization/byUserRoleId' => ['controller' => 'AppAuthorizationController', 'method' => 'byUserRoleId'],
 
-    '/api/customer/password/list' => ['controller' => 'PassPasswordController', 'method' => 'list'],
-    '/api/customer/password/id' => ['controller' => 'PassPasswordController', 'method' => 'id'],
-    '/api/customer/password/create' => ['controller' => 'PassPasswordController', 'method' => 'create'],
-    '/api/customer/password/update' => ['controller' => 'PassPasswordController', 'method' => 'update'],
-    '/api/customer/password/delete' => ['controller' => 'PassPasswordController', 'method' => 'delete'],
+    '/api/passPassword/detail' => ['controller' => 'PassPasswordController', 'method' => 'detail'],
+    '/api/passPassword/scroll' => ['controller' => 'PassPasswordController', 'method' => 'scroll'],
+    '/api/passPassword/id' => ['controller' => 'PassPasswordController', 'method' => 'id'],
+    '/api/passPassword/create' => ['controller' => 'PassPasswordController', 'method' => 'create'],
+    '/api/passPassword/update' => ['controller' => 'PassPasswordController', 'method' => 'update'],
+    '/api/passPassword/delete' => ['controller' => 'PassPasswordController', 'method' => 'delete'],
 
-    '/api/customer/password/actionAudit' => ['controller' => 'PassPasswordController', 'method' => 'actionAudit'],
+    '/api/passPassword/actionAudit' => ['controller' => 'PassPasswordController', 'method' => 'actionAudit'],
 ]);
 
 define('API_ADMIN_ATH',[
-    '/customer/route/assigns' => ['controller' => 'RouteController', 'method' => 'assigns'],
-    '/customer/route/un/assigns' => ['controller' => 'RouteController', 'method' => 'unAssigns'],
-    '/customer/route/remove/assign' => ['controller' => 'RouteController', 'method' => 'removeAssign'],
-    '/customer/route/add/assigns' => ['controller' => 'RouteController', 'method' => 'addAssign'],
 ]);
 
 class Router{

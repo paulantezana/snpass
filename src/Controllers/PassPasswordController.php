@@ -1,7 +1,7 @@
 <?php
 
 require_once MODEL_PATH . '/PassPassword.php';
-require_once MODEL_PATH . '/PassCustomer.php';
+require_once MODEL_PATH . '/PassFolder.php';
 
 class PassPasswordController extends Controller
 {
@@ -14,24 +14,41 @@ class PassPasswordController extends Controller
         $this->passPasswordModel = new PassPassword($connection);
     }
 
-    public function list(){
-        $passCustomerId = $_GET['passCustomerId'] ?? 0;
-        if (!$passCustomerId){
+    public function detail(){
+        $passPasswordId = $_GET['passPasswordId'] ?? 0;
+        if (!$passPasswordId){
             echo '';
             return;
         }
 
-        $passCustomerModel = new PassCustomer($this->connection);
-        $passCustomer = $passCustomerModel->GetById((int)$passCustomerId);
+        $passCustomerModel = new PassFolder($this->connection);
 
-        $password = $this->passPasswordModel->GetAllByCustomerId((int)$passCustomerId);
+        $passPassword = $this->passPasswordModel->GetById((int)$passPasswordId);
+        $passCustomer = $passCustomerModel->GetById((int)$passPassword->result['pass_folder_id'] ?? 0);
 
         ob_start();
         $this->render('admin/pass/password.php',[
-            'passCustomer' => $passCustomer->result,
-            'password' => $password->result,
+            'passFolder' => $passCustomer->result,
+            'passPassword' => $passPassword->result,
         ]);
         echo ob_get_clean();
+    }
+
+    public function scroll(){
+        $postData = file_get_contents("php://input");
+        $body = json_decode($postData, true);
+
+        if (!$body){
+            echo '';
+            return;
+        }
+
+        $current = $body['current'] ?? 0;
+        $search = $body['search'] ?? '';
+        $current = $current ? $current : 1;
+
+        $res = $this->passPasswordModel->Scroll($current,$search);
+        echo json_encode($res);
     }
 
     public function id(){
@@ -73,15 +90,7 @@ class PassPasswordController extends Controller
             return;
         }
 
-        $res = $this->passPasswordModel->UpdateById((int)$body['passPasswordId'],[
-            "title" => $body['title'],
-            "description" => $body['description'],
-            "user_name" => $body['userName'],
-            "password" => $body['password'],
-            "web_site" => $body['webSite'],
-            "key_char" => $body['keyChar'],
-            "pass_customer_id" => $body['passCustomerId'],
-        ]);
+        $res = $this->passPasswordModel->Update($body, $_SESSION[SESS_KEY]);
         echo json_encode($res);
     }
     public function delete(){

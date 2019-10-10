@@ -20,10 +20,10 @@ class Report
             $totalPages = ceil($totalRows / $limit);
 
             // Query by pages
-            $sql = "SELECT pass.*, user.user_name as user_name, pp.title as pass_title, pc.name as customer FROM pass_password_audit as pass
+            $sql = "SELECT pass.*, user.user_name as user_name, pp.title as pass_title, pf.name as customer FROM pass_password_audit as pass
                         INNER JOIN user ON pass.user_refer_id = user.user_id
                         INNER JOIN pass_password pp on pass.pass_password_id = pp.pass_password_id
-                        INNER JOIN pass_customer pc on pp.pass_customer_id = pc.pass_customer_id";
+                        INNER JOIN pass_folder pf on pp.pass_folder_id = pf.pass_folder_id";
 
             $filterNumber = 0;
             if ($filter['customerId'] ?? false){
@@ -92,7 +92,7 @@ class Report
             $stmt->execute();
             $user = $stmt->fetch()['count'];
 
-            $sql = 'SELECT count(*) as count FROM pass_customer';
+            $sql = 'SELECT count(*) as count FROM pass_folder';
             $stmt = $this->db->prepare($sql);
             $stmt->execute();
             $customer = $stmt->fetch()['count'];
@@ -134,10 +134,10 @@ class Report
     public function TopCustomerCopy(){
         $res = new Result();
         try{
-            $sql = 'SELECT pc.name, count(*) as count FROM pass_password_audit ppa
+            $sql = 'SELECT pf.name, count(*) as count FROM pass_password_audit ppa
                     INNER JOIN pass_password pp on ppa.pass_password_id = pp.pass_password_id
-                    INNER JOIN pass_customer pc on pp.pass_customer_id = pc.pass_customer_id
-                    GROUP BY pc.name LIMIT 10';
+                    INNER JOIN pass_folder pf on pp.pass_folder_id = pf.pass_folder_id
+                    GROUP BY pf.name LIMIT 10';
             $stmt = $this->db->prepare($sql);
             $stmt->execute();
 

@@ -51,7 +51,7 @@ class AuthController extends Controller
         }
         $_SESSION[SESS_MENU] = $appAuthorization->result;
 
-        $this->redirect('/admin/customer');
+        $this->redirect('/admin/folder');
     }
 
     public function logout(){

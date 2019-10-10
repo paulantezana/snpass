@@ -56,8 +56,8 @@ CREATE TABLE user(
 );
 
 
-CREATE TABLE pass_customer(
-    pass_customer_id INT AUTO_INCREMENT NOT NULL,
+CREATE TABLE pass_folder(
+    pass_folder_id INT AUTO_INCREMENT NOT NULL,
     updated_at DATETIME NOT NULL,
     created_at DATETIME NOT NULL,
     created_user_id INT,
@@ -66,7 +66,7 @@ CREATE TABLE pass_customer(
     name varchar(255) NOT NULL,
     description varchar(255),
 
-    CONSTRAINT pk_pass_customer PRIMARY KEY (pass_customer_id)
+    CONSTRAINT pk_pass_folder PRIMARY KEY (pass_folder_id)
 );
 
 CREATE TABLE pass_password(
@@ -78,10 +78,11 @@ CREATE TABLE pass_password(
     web_site varchar(255),
     key_char char,
 
-    pass_customer_id INT NOT NULL,
+    last_update DATETIME,
+    pass_folder_id INT NOT NULL,
 
     CONSTRAINT pk_pass_password PRIMARY KEY (pass_password_id),
-    CONSTRAINT fk_pass_password_pass_customer FOREIGN KEY (pass_customer_id) REFERENCES pass_customer (pass_customer_id)
+    CONSTRAINT fk_pass_password_pass_customer FOREIGN KEY (pass_folder_id) REFERENCES pass_folder (pass_folder_id)
         ON UPDATE RESTRICT ON DELETE RESTRICT
 );
 

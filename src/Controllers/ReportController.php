@@ -1,6 +1,6 @@
 <?php
 
-require_once MODEL_PATH . '/PassCustomer.php';
+require_once MODEL_PATH . '/PassFolder.php';
 require_once MODEL_PATH . '/User.php';
 require_once MODEL_PATH . '/PassPassword.php';
 require_once MODEL_PATH . '/Report.php';
@@ -26,7 +26,7 @@ class ReportController extends Controller
         $filter = $_GET['filter'] ?? [];
 
         $userModel = new User($this->connection);
-        $passCustomerModel = new PassCustomer($this->connection);
+        $passCustomerModel = new PassFolder($this->connection);
 
         $user = $userModel->GetAll();
         $customer = $passCustomerModel->GetAll();

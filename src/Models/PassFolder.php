@@ -1,11 +1,11 @@
 <?php
 
 
-class PassCustomer extends Model
+class PassFolder extends Model
 {
     public function __construct(PDO $connection)
     {
-        parent::__construct("pass_customer","pass_customer_id", $connection);
+        parent::__construct("pass_folder","pass_folder_id", $connection);
     }
 
     public function scroll($page, $search){
@@ -19,11 +19,11 @@ class PassCustomer extends Model
             $offset = ($page - 1) * $pageCount;
 
             // Total pages
-            $totalRows = $this->db->query("SELECT COUNT(*) FROM pass_customer WHERE name LIKE '%" . $search . "%'")->fetchColumn();
+            $totalRows = $this->db->query("SELECT COUNT(*) FROM pass_folder WHERE name LIKE '%" . $search . "%'")->fetchColumn();
             $totalPages = ceil($totalRows / $pageCount);
 
             // Query by pages
-            $sql = "SELECT * FROM pass_customer WHERE name LIKE :name ORDER BY pass_customer_id DESC LIMIT $offset, $pageCount";
+            $sql = "SELECT * FROM pass_folder WHERE name LIKE :name ORDER BY pass_folder_id DESC LIMIT $offset, $pageCount";
             $stmt = $this->db->prepare($sql);
             $stmt->execute([
                 ':name' => '%' . $search . '%'
@@ -48,7 +48,7 @@ class PassCustomer extends Model
         try{
             $currentDate = date('Y-m-d H:i:s');
 
-            $sql = "INSERT INTO pass_customer (updated_at, created_at, created_user_id, updated_user_id, name, description)
+            $sql = "INSERT INTO pass_folder (updated_at, created_at, created_user_id, updated_user_id, name, description)
                     VALUES (:updated_at, :created_at, :created_user_id, :updated_user_id, :name, :description)";
 
             $stmt = $this->db->prepare($sql);

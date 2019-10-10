@@ -31,12 +31,12 @@
                 <ul class="HeaderMenu SnMenu">
                     <li>
                         <div class="Header-action">
-                            <input class="SnSwitch SnSwitch-ios" id="themeMode" type="checkbox">
+                            <input class="SnSwitch SnSwitch-ios" id="themeMode" type="checkbox" checked>
                             <label class="SnSwitch-btn" for="themeMode"></label>
                         </div>
                     </li>
                     <li>
-                        <a href="<?= URL_PATH ?>/admin/customer" class="Header-action">
+                        <a href="<?= URL_PATH ?>/admin/folder" class="Header-action">
                             <i class="icon-search"></i>
                         </a>
                     </li>

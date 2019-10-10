@@ -1,16 +1,28 @@
 <?php
 
-require_once MODEL_PATH . '/PassCustomer.php';
+require_once MODEL_PATH . '/PassFolder.php';
 
-class PassCustomerController extends Controller
+class PassFolderController extends Controller
 {
     protected $connection;
-    protected $passCustomerModel;
+    protected $passFolderModel;
 
     public function __construct(PDO $connection)
     {
         $this->connection = $connection;
-        $this->passCustomerModel = new PassCustomer($connection);
+        $this->passFolderModel = new PassFolder($connection);
+    }
+
+    public function search(){
+        $postData = file_get_contents("php://input");
+        $body = json_decode($postData, true);
+        if (!$body){
+            echo '';
+            return;
+        }
+
+        $passFolder = $this->passFolderModel->SearchBy('name',$body['search'] ?? '');
+        echo json_encode($passFolder);
     }
 
     public function index(){
@@ -30,7 +42,7 @@ class PassCustomerController extends Controller
         $search = $body['search'] ?? '';
         $current = $current ? $current : 1;
 
-        $res = $this->passCustomerModel->scroll($current,$search);
+        $res = $this->passFolderModel->scroll($current,$search);
         echo json_encode($res);
     }
 
@@ -38,7 +50,7 @@ class PassCustomerController extends Controller
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 
-        $res = $this->passCustomerModel->DeleteById((int)($body['passCustomerId'] ?? 0));
+        $res = $this->passFolderModel->DeleteById((int)($body['passCustomerId'] ?? 0));
         echo json_encode($res);
     }
 
@@ -50,8 +62,8 @@ class PassCustomerController extends Controller
             return;
         }
 
-        $passCustomer = $this->passCustomerModel->GetById((int)$body['passCustomerId']);
-        echo json_encode($passCustomer);
+        $passFolder = $this->passFolderModel->GetById((int)$body['passCustomerId']);
+        echo json_encode($passFolder);
     }
 
     public function create(){
@@ -64,7 +76,7 @@ class PassCustomerController extends Controller
             return;
         }
 
-        $res = $this->passCustomerModel->Insert($body, $_SESSION[SESS_KEY]);
+        $res = $this->passFolderModel->Insert($body, $_SESSION[SESS_KEY]);
         echo json_encode($res);
     }
 
@@ -78,7 +90,7 @@ class PassCustomerController extends Controller
             return;
         }
 
-        $res = $this->passCustomerModel->UpdateById((int)$body['passCustomerId'],[
+        $res = $this->passFolderModel->UpdateById((int)$body['passCustomerId'],[
             'name' => $body['name'] ?? '',
             'description' => $body['description'] ?? '',
             'updated_at' => date('Y-m-d H:i:s'),

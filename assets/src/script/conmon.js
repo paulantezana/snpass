@@ -1,7 +1,7 @@
-//const Service = {
-//    path: 'http://localhost/SkynetPass/admin',
-//    apiPath: 'http://localhost/SkynetPass/admin',
-//};
+// const Service = {
+//    path: 'http://localhost/snpass/admin',
+//    apiPath: 'http://localhost/snpass/admin',
+// };
 
 const Service = {
     path: 'https://snpass.paulantezana.com/admin',

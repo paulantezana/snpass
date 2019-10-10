@@ -10,21 +10,28 @@
             <form action="" class="SnForm" id="passPasswordForm" onsubmit="PassPasswordForm.submit(event)">
                 <input type="hidden" class="SnForm-input" id="passPasswordId">
                 <div class="SnForm-item required">
-                    <label for="passPasswordTitle" class="SnForm-label">Titulo o nombre</label>
-                    <input type="text" class="SnForm-input" id="passPasswordTitle">
-                </div>
-
-                <div class="SnForm-item required">
-                    <label for="passPasswordUserName" class="SnForm-label">Email o usuario</label>
-                    <input type="text" class="SnForm-input" id="passPasswordUserName">
-                </div>
-                <div class="SnForm-item required">
-                    <label for="passPasswordPassword" class="SnForm-label">Contrasena</label>
-                    <input type="password" class="SnForm-input" id="passPasswordPassword">
-                </div>
-                <div class="SnForm-item required">
                     <label for="passPasswordWebSite" class="SnForm-label">Url</label>
                     <input type="text" class="SnForm-input" id="passPasswordWebSite">
+                </div>
+                <div class="SnGrid m-2">
+                    <div class="SnForm-item required">
+                        <label for="passPasswordTitle" class="SnForm-label">Titulo o nombre</label>
+                        <input type="text" class="SnForm-input" id="passPasswordTitle">
+                    </div>
+                    <div class="SnForm-item required">
+                        <label for="passFolderName" class="SnForm-label">Carpeta</label>
+                        <input type="text" class="SnForm-input" id="passFolderName">
+                    </div>
+                </div>
+                <div class="SnGrid m-2">
+                    <div class="SnForm-item required">
+                        <label for="passPasswordUserName" class="SnForm-label">Email o usuario</label>
+                        <input type="text" class="SnForm-input" id="passPasswordUserName">
+                    </div>
+                    <div class="SnForm-item required">
+                        <label for="passPasswordPassword" class="SnForm-label">Contrasena</label>
+                        <input type="password" class="SnForm-input" id="passPasswordPassword">
+                    </div>
                 </div>
                 <div class="SnForm-item hidden">
                     <label for="passPasswordKeyChar" class="SnForm-label">Clave</label>

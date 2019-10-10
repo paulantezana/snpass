@@ -2,24 +2,24 @@
     <div class="PassCustomer-row">
         <input 
             type="text"
-            onkeyup="PassCustomerForm.search(event)"
+            onkeyup="PassPasswordForm.search(event)"
             id="searchPassCustomer"
             style="height: 2.5rem"
             class="SnForm-input icon-search"
-            placeholder="Buscar..."
+            placeholder="Buscar en mi bóveda..."
         >
     </div>
     <div class="PassCustomer-row PassCustomer-options">
         <strong>
-            Clientes
+            Contraseñas
         </strong>
         <div class="SnBtns">
             <div class="SnBtn jsPassCustomerOption" id="passCustomerModalReload" onclick="InfinityLoading.reload()" >Actualizar</div>
-            <div class="SnBtn primary jsPassCustomerOption" onclick="PassCustomerForm.showModalCreate()" >Nuevo</div>
+            <div class="SnBtn primary jsPassCustomerOption" onclick="PassPasswordForm.showModalCreate()" >Nuevo</div>
         </div>
     </div>
     <div class="PassCustomer-list">
-        <ul class="CustomerList InfiniteScroll" id="passCustomerList">
+        <ul class="CustomerList InfiniteScroll" id="passPasswordList">
         </ul>
         <div class="SnLoading"></div>
     </div>
@@ -28,5 +28,5 @@
     </div>
 </div>
 <?php
-    require_once __DIR__ . '/customerModalForm.php';
+    // require_once __DIR__ . '/customerModalForm.php';
 ?>

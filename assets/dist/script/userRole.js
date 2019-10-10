@@ -15,7 +15,7 @@ let UserRoleForm = {
     },
 
     list() {
-        RequestApi.fetchText('/api/user/role/list')
+        RequestApi.fetchText('/api/userRole/list')
             .then(res => {
                 let passPasswordContainer = document.getElementById('userRoleListContainer');
                 if (passPasswordContainer) {
@@ -140,7 +140,7 @@ let UserRoleForm = {
         }
 
         this.setLoading(true);
-        const url = this.currentModeForm === 'update' ? '/api/user/role/update' : '/api/user/role/create';
+        const url = this.currentModeForm === 'update' ? '/api/userRole/update' : '/api/userRole/create';
 
         RequestApi.fetch(url, {
             method: 'POST',
@@ -172,7 +172,7 @@ let UserRoleForm = {
             cancelText: 'No',
             onOk() {
                 _setLoading(true);
-                RequestApi.fetch('/api/user/role/delete', {
+                RequestApi.fetch('/api/userRole/delete', {
                     method: 'POST',
                     body: {
                         userRoleId: userRoleId || 0
@@ -203,7 +203,7 @@ let UserRoleForm = {
         this.currentModeForm = 'update';
         this.setLoading(true);
 
-        RequestApi.fetch('/api/user/role/id', {
+        RequestApi.fetch('/api/userRole/id', {
             method: 'POST',
             body: {
                 userRoleId: userRoleId || 0

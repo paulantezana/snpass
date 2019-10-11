@@ -104,9 +104,6 @@
 .icon-tachometer:before {
   content: "\6c";
 }
-.icon-key:before {
-  content: "\76";
-}
 .icon-code-fork:before {
   content: "\77";
 }
@@ -124,4 +121,10 @@
 }
 .icon-cog:before {
   content: "\42";
+}
+.icon-eye:before {
+  content: "\43";
+}
+.icon-lock:before {
+  content: "\76";
 }

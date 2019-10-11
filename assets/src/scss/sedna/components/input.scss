@@ -1,0 +1,23 @@
+@mixin SnInput(){
+  .SnInput{
+    padding-left: 32px;
+    padding-right: 32px;
+    &-wrapper{
+      position: relative;
+    }
+    &-prefix,
+    &-suffix{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: .4;
+      cursor: pointer;
+    }
+    &-prefix{
+      left: 12px;
+    }
+    &-suffix{
+      right: 12px;
+    }
+  }
+}

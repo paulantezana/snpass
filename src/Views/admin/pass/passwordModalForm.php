@@ -30,7 +30,10 @@
                     </div>
                     <div class="SnForm-item required">
                         <label for="passPasswordPassword" class="SnForm-label">Contrasena</label>
-                        <input type="password" class="SnForm-input" id="passPasswordPassword">
+                        <div class="SnInput-wrapper">
+                            <input type="password" class="SnForm-input" id="passPasswordPassword">
+                            <span class="SnInput-suffix icon-eye togglePassword"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="SnForm-item hidden">

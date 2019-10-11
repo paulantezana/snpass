@@ -7,11 +7,15 @@
     <form action="<?= URL_PATH ?>/auth/login" method="post" class="SnForm">
         <div class="SnForm-item required">
             <label for="username" class="SnForm-label">Nombre de usuario</label>
-            <input type="text" class="SnForm-input" required id="username" name="user">
+
+                <input type="text" class="SnForm-input" required id="username" name="user">
         </div>
         <div class="SnForm-item required">
             <label for="password" class="SnForm-label">Contraseña</label>
-            <input type="password" class="SnForm-input" required id="password" name="password">
+            <div class="SnInput-wrapper">
+                <input type="password" class="SnForm-input" required id="password" name="password" >
+                <span class="SnInput-suffix icon-eye togglePassword"></span>
+            </div>
         </div>
         <div class="SnForm-item SnFlex">
             <div>

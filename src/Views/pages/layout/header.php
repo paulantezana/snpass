@@ -13,6 +13,7 @@
     <link rel="shortcut icon" href="<?= URL_PATH ?>/assets/images/logo.png">
 
     <link rel="manifest" href="<?= URL_PATH ?>/assets/dist/manifest.json">
+    <script src="<?= URL_PATH ?>/assets/dist/script/sedna-min.js"></script>
 </head>
 <body>
 <div class="BasicLayout" id="BasicLayout">

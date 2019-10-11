@@ -19,7 +19,7 @@
                 <?php endif; ?>
                 <?php if (ArrayFindIndexByColumn($asideMenu,'module','contraseña')): ?>
                     <li>
-                        <a href="<?= URL_PATH ?>/admin/folder"> <i class="icon-key"></i> <span>Contraseñas </span> </a>
+                        <a href="<?= URL_PATH ?>/admin/folder"> <i class="icon-lock"></i> <span>Contraseñas </span> </a>
                     </li>
                 <?php endif; ?>
                 <?php if (ArrayFindIndexByColumn($asideMenu,'module','reporte')): ?>

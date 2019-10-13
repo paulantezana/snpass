@@ -6,6 +6,6 @@
         <p><?= $message ?? '' ?></p>
     <?php endif; ?>
     <p class="Result-description">Lo sentimos, no estás autorizado para acceder a esta página.</p>
-    <a href="<?= URL_PATH ?>" class="SnBtn primary">Volver al Inicio</a>
+    <a href="<?= URL_PATH ?>/" class="SnBtn primary">Volver al Inicio</a>
 </div>
 <?php require_once __DIR__ . '/layout/footer.php' ?>

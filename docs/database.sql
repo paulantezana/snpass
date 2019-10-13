@@ -87,6 +87,12 @@ CREATE TABLE pass_password(
         ON UPDATE RESTRICT ON DELETE RESTRICT
 );
 
+CREATE TABLE pass_password_licence(
+    pass_password_licence_id INT AUTO_INCREMENT NOT NULL,
+    reference ENUM('role','user','folder'),
+    reference_id INT NOT NULL,
+    CONSTRAINT pk_pass_password_licence PRIMARY KEY (pass_password_licence_id)
+);
 
 CREATE TABLE pass_password_audit(
     pass_password_audit_id INT AUTO_INCREMENT NOT NULL,

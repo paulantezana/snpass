@@ -1,6 +1,9 @@
 .Login{
   max-width: 100%;
-  width: 300px;
+  width: 250px;
+  @include from(l){
+    width: 320px;
+  }
   .SnForm-input{
       background: var(--snColorBgAlt);
   }

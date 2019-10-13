@@ -48,6 +48,7 @@ class RequestApi {
                 return response.json(); // Return response
             }).catch(err => {
                 NProgress.done();
+                window.location.replace(Service.path  + '/500?message=' + err.message);
                 return err;
             })
     }
@@ -64,6 +65,7 @@ class RequestApi {
                 return response.text();
             }).catch(err => {
                 NProgress.done();
+                window.location.replace(Service.path  + '/500?message=' + err.message);
                 return err;
             })
     }

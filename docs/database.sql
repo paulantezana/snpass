@@ -132,10 +132,10 @@ INSERT INTO app_authorization(module, action, description, state) VALUES
     ('rol','eliminar','Eliminar un rol',true),
     ('rol','modificar','Acualizar los roles',true),
 
-    ('cliente','listar','listar cliente',true),
-    ('cliente','crear','crear nuevos cliente',true),
-    ('cliente','eliminar','Eliminar un cliente',true),
-    ('cliente','modificar','Acualizar los cliente',true),
+    ('folder','listar','listar cliente',true),
+    ('folder','crear','crear nuevos cliente',true),
+    ('folder','eliminar','Eliminar un cliente',true),
+    ('folder','modificar','Acualizar los cliente',true),
 
     ('contraseña','listar','listar contraseñas',true),
     ('contraseña','crear','crear nuevos contraseña',true),

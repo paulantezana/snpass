@@ -14,6 +14,8 @@ class AppAuthorizationController extends  Controller
     }
 
     public function byUserRoleId(){
+        Authorization($this->connection,'rol','modificar');
+
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
         if (!$body){
@@ -26,6 +28,8 @@ class AppAuthorizationController extends  Controller
     }
 
     public function save(){
+        Authorization($this->connection,'rol','modificar');
+
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 

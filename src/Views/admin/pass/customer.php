@@ -14,8 +14,8 @@
             Contraseñas
         </strong>
         <div class="SnBtns">
-            <div class="SnBtn jsPassCustomerOption" id="passCustomerModalReload" onclick="InfinityLoading.reload()" >Actualizar</div>
-            <div class="SnBtn primary jsPassCustomerOption" onclick="PassPasswordForm.showModalCreate()" >Nuevo</div>
+            <div class="SnBtn jsPassPasswordOption" id="passCustomerModalReload" onclick="InfinityLoading.reload()" >Actualizar</div>
+            <div class="SnBtn primary jsPassPasswordOption" onclick="PassPasswordForm.showModalCreate()" >Nuevo</div>
         </div>
     </div>
     <div class="PassCustomer-list">

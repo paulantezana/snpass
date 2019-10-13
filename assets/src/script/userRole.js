@@ -2,8 +2,8 @@ let UserRoleForm = {
     currentModeForm: 'create',
     modalName: 'userRoleModalForm',
 
-    currentForm: document.getElementById('userRoleForm'),
-    submitButton: document.getElementById('userRoleFormSubmit'),
+    currentForm: null,
+    submitButton: null,
 
     loading: false,
     passCustomerId: 0,
@@ -11,6 +11,8 @@ let UserRoleForm = {
     currentUserRoleId: 0,
 
     init() {
+        this.currentForm = document.getElementById('userRoleForm');
+        this.submitButton = document.getElementById('userRoleFormSubmit');
         this.list();
     },
 
@@ -21,8 +23,6 @@ let UserRoleForm = {
                 if (passPasswordContainer) {
                     passPasswordContainer.innerHTML = res;
                 }
-            }).catch(err => {
-                SnModal.error({ title: 'Algo salió mal', content: err.message })
             })
     },
 
@@ -53,8 +53,6 @@ let UserRoleForm = {
             } else {
                 SnModal.error({ title: 'Algo salió mal', content: res.message });
             }
-        }).catch(err => {
-            SnModal.error({ title: 'Algo salió mal', content: err.message });
         }).finally(e => {
             this.setLoading(false);
         });
@@ -90,8 +88,6 @@ let UserRoleForm = {
             } else {
                 SnModal.error({ title: 'Algo salió mal', content: res.message })
             }
-        }).catch(err => {
-            SnModal.error({ title: 'Algo salió mal', content: err.message })
         }).finally(e => {
             this.setLoading(false);
         })
@@ -153,8 +149,6 @@ let UserRoleForm = {
             } else {
                 SnModal.error({ confirm: false, title: 'Algo salió mal', content: res.message })
             }
-        }).catch(err => {
-            SnModal.error({ confirm: false, title: 'Algo salió mal', content: err.message })
         }).finally(e => {
             this.setLoading(false);
         })
@@ -184,8 +178,6 @@ let UserRoleForm = {
                     } else {
                         SnModal.error({ title: 'Algo salió mal', content: res.message })
                     }
-                }).catch(err => {
-                    SnModal.error({ title: 'Algo salió mal', content: err.message })
                 }).finally(e => {
                     _setLoading(false);
                 })
@@ -216,12 +208,12 @@ let UserRoleForm = {
             } else {
                 SnModal.error({ title: 'Algo salió mal', content: res.message })
             }
-        }).catch(err => {
-            SnModal.error({ title: 'Algo salió mal', content: err.message })
         }).finally(e => {
             this.setLoading(false);
         })
     },
 };
 
-UserRoleForm.init();
+document.addEventListener('DOMContentLoaded',()=>{
+    UserRoleForm.init();
+});

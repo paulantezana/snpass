@@ -56,7 +56,11 @@ class AuthController extends Controller
             return;
         }
 
-        $this->initApp($loginUser);
+        if(!$this->initApp($loginUser)){
+            $this->logout();
+            $this->redirect('/403');
+            return;
+        }
 
         if (!$loginUser['fa2_secret_enabled']){
             $this->redirect('/admin/auth/fa2');
@@ -66,7 +70,7 @@ class AuthController extends Controller
         $this->redirect('/admin/folder');
     }
 
-    private function initApp($user){
+    private function initApp($user) {
         unset($user['password']);
         unset($user['temp_key']);
         unset($user['last_update_temp_key']);
@@ -78,10 +82,10 @@ class AuthController extends Controller
         $appAuthorizationModel = new AppAuthorization($this->connection);
         $appAuthorization = $appAuthorizationModel->GetMenu($user['user_role_id']);
         if (count($appAuthorization->result)<1){
-            $this->redirect('/403');
-            $this->logout();
+            return false;
         }
         $_SESSION[SESS_MENU] = $appAuthorization->result;
+        return true;
     }
 
     public function posLogin(){
@@ -97,7 +101,11 @@ class AuthController extends Controller
             if ($userModelRes->success){
                 $checkResult = $timeAuthenticator->verifyCode($userModelRes->result['fa2_secret'] ?? '',$faKey);
                 if ($checkResult) {
-                    $this->initApp($userModelRes->result);
+                    if(!$this->initApp($userModelRes->result)){
+                        $this->logout();
+                        $this->redirect('/403');
+                        return;
+                    }
                     $this->redirect('/admin/folder');
                 } else {
                     $this->render('pages/posLogin.php',[

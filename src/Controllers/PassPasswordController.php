@@ -15,6 +15,8 @@ class PassPasswordController extends Controller
     }
 
     public function detail(){
+        Authorization($this->connection,'contraseña','listar');
+
         $passPasswordId = $_GET['passPasswordId'] ?? 0;
         if (!$passPasswordId){
             echo '';
@@ -35,6 +37,8 @@ class PassPasswordController extends Controller
     }
 
     public function scroll(){
+        Authorization($this->connection,'contraseña','listar');
+
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 
@@ -52,6 +56,8 @@ class PassPasswordController extends Controller
     }
 
     public function id(){
+        Authorization($this->connection,'contraseña','modificar');
+
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
         if (!$body){
@@ -64,7 +70,7 @@ class PassPasswordController extends Controller
     }
 
     public function create(){
-        Authorization($this->connection,'rol','crear');
+        Authorization($this->connection,'contraseña','crear');
 
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
@@ -79,7 +85,7 @@ class PassPasswordController extends Controller
         echo json_encode($res);
     }
     public function update(){
-        Authorization($this->connection,'rol','eliminar');
+        Authorization($this->connection,'contraseña','modificar');
 
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
@@ -94,6 +100,8 @@ class PassPasswordController extends Controller
         echo json_encode($res);
     }
     public function delete(){
+        Authorization($this->connection,'contraseña','eliminar');
+
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 

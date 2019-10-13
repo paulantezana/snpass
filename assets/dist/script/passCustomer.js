@@ -77,11 +77,13 @@ let  InfinityLoading = {
                     current: this.current + 1,
                     search: this.search,
                 }
-            }).then(response => {
-                if (response.success) {
-                    this.current = response.current;
-                    this.more = response.more;
-                    this.renderContent(response);
+            }).then(res => {
+                if (res.success) {
+                    this.current = res.current;
+                    this.more = res.more;
+                    this.renderContent(res);
+                }else {
+                    SnModal.error({ title: 'Algo salió mal', content: res.message })
                 }
             }).finally(()=>{
                 this.loading = false;
@@ -114,10 +116,10 @@ let  InfinityLoading = {
                                         </div>
                                     </div>
                                     <div class="CustomerRow-action">
-                                        <div class="SnBtn jsPassCustomerOption"onclick="PassPasswordForm.showModalUpdate(${item.pass_password_id},'${item.folder_name} - ${item.title}')">
+                                        <div class="SnBtn jsPassPasswordOption"onclick="PassPasswordForm.showModalUpdate(${item.pass_password_id},'${item.folder_name} - ${item.title}')">
                                             <i class="icon-edit"></i>
                                         </div>
-                                        <div class="SnBtn jsPassCustomerOption" onclick="PassPasswordForm.delete(${item.pass_password_id},'${item.folder_name} - ${item.title}')">
+                                        <div class="SnBtn jsPassPasswordOption" onclick="PassPasswordForm.delete(${item.pass_password_id},'${item.folder_name} - ${item.title}')">
                                             <i class="icon-trash"></i>
                                         </div>
                                     </div>
@@ -132,18 +134,21 @@ let PassPasswordForm = {
     currentModeForm : 'create',
     modalName : 'passPasswordModalForm',
 
-    currentForm : document.getElementById('passPasswordForm'),
-    submitButton : document.getElementById('passPasswordFormSubmit'),
+    currentForm : null,
+    submitButton : null,
 
     loading : false,
     passCustomerId : 0,
 
     init(){
         InfinityLoading.init('#passPasswordList');
+        this.currentForm = document.getElementById('passPasswordForm');
+        this.submitButton = document.getElementById('passPasswordFormSubmit');
     },
 
     id(id){
         this.passCustomerId = id;
+        this.setLoading(true);
         RequestApi.fetchText('/api/passPassword/detail?passPasswordId=' + id )
             .then(res => {
                 let passPasswordContainer =  document.getElementById('passPasswordContainer');
@@ -151,9 +156,9 @@ let PassPasswordForm = {
                     passPasswordContainer.innerHTML = res;
                     SnModal.open('passPasswordModal');
                 }
-            }).catch(err => {
-            SnModal.error({ title: 'Algo salió mal', content: err.message })
-        })
+            }).finally(e=>{
+                this.setLoading(false);
+            })
     },
 
     setLoading(state){
@@ -201,6 +206,7 @@ let PassPasswordForm = {
         document.execCommand("copy");
         window.getSelection().removeAllRanges();
 
+        this.setLoading(true);
         let url = '/api/passPassword/actionAudit';
         RequestApi.fetch(url,{
             method: 'POST',
@@ -209,10 +215,10 @@ let PassPasswordForm = {
                 passPasswordId: passPasswordId,
             }
         }).then(res => {
-                SnMessage.success({content: 'Se copio al portapapeles'});
-            }).catch(err => {
-            SnModal.error({ title: 'Algo salió mal', content: err.message })
-        });
+            SnMessage.success({content: 'Se copio al portapapeles'});
+        }).finally(e=>{
+            this.setLoading(false);
+        })
     },
 
     submit(event){
@@ -243,10 +249,8 @@ let PassPasswordForm = {
                 SnModal.close(this.modalName);
                 SnMessage.success({ content: res.message });
             } else {
-                SnModal.error({ confirm: false, title: 'Algo salió mal', content: res.message })
+                SnModal.error({ title: 'Algo salió mal', content: res.message })
             }
-        }).catch(err => {
-            SnModal.error({ confirm: false, title: 'Algo salió mal', content: err.message })
         }).finally(e =>{
             this.setLoading(false);
         })
@@ -275,8 +279,6 @@ let PassPasswordForm = {
                     }else {
                         SnModal.error({ title: 'Algo salió mal', content: res.message })
                     }
-                }).catch(err => {
-                    SnModal.error({ title: 'Algo salió mal', content: err.message })
                 }).finally(e=>{
                     _setLoading(false);
                 })
@@ -314,11 +316,12 @@ let PassPasswordForm = {
             }else {
                 SnModal.error({ title: 'Algo salió mal', content: res.message })
             }
-        }).catch(err => {
-            SnModal.error({ title: 'Algo salió mal', content: err.message })
         }).finally(e=>{
             this.setLoading(false);
         })
     },
 };
-PassPasswordForm.init();
+
+document.addEventListener('DOMContentLoaded',()=>{
+    PassPasswordForm.init();
+});

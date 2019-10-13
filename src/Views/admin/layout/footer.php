@@ -24,7 +24,11 @@
                 <?php endif; ?>
                 <?php if (ArrayFindIndexByColumn($asideMenu,'module','reporte')): ?>
                     <li>
-                        <a href="<?= URL_PATH ?>/admin/report/general"> <i class="icon-repo"></i> <span>Reportes </span> </a>
+                        <a href="#"> <i class="icon-repo"></i> <span>Reportes </span> </a>
+                        <ul>
+                            <li><a href="<?= URL_PATH ?>/admin/report/general">Resumen</a></li>
+                            <li><a href="<?= URL_PATH ?>/admin/report/session">Sessiones</a></li>
+                        </ul>
                     </li>
                 <?php endif; ?>
                 <?php if (ArrayFindIndexByColumn($asideMenu,'module','usuario')): ?>

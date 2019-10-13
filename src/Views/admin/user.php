@@ -9,8 +9,8 @@
 <!--                    <i class="icon-refresh"></i>-->
 <!--                    Actualizar-->
 <!--                </div>-->
-            <div class="SnBtn primary" onclick="UserForm.showModalCreate()" >
-                <i class="icon-save"></i>
+            <div class="SnBtn primary jsUserOption" onclick="UserForm.showModalCreate()" >
+                <i class="icon-plus"></i>
                 Nuevo
             </div>
         </div>
@@ -31,19 +31,23 @@
                     <tbody>
                         <?php foreach ($user['data'] ?? [] as $row): ?>
                             <tr>
-                                <td><?= $row['avatar'] ?></td>
+                                <td>
+                                    <div class="SnAvatar">
+                                        <img src="<?= URL_PATH ?>/assets/images/logo.png" alt="avatar">
+                                    </div>
+                                </td>
                                 <td><?= $row['user_name'] ?></td>
                                 <td><?= $row['email'] ?></td>
                                 <td><?= $row['state'] ?></td>
                                 <td>
                                     <div class="SnTable-action">
-                                        <div class="SnBtn" onclick="UserForm.executeUpdatePassword(<?= $row['user_id'] ?>)">
-                                            <i class="icon-key"></i>
+                                        <div class="SnBtn jsUserOption" onclick="UserForm.executeUpdatePassword(<?= $row['user_id'] ?>)">
+                                            <i class="icon-lock"></i>
                                         </div>
-                                        <div class="SnBtn" onclick="UserForm.executeUpdateNormal(<?= $row['user_id'] ?>)">
+                                        <div class="SnBtn jsUserOption" onclick="UserForm.executeUpdateNormal(<?= $row['user_id'] ?>)">
                                             <i class="icon-edit"></i>
                                         </div>
-                                        <div class="SnBtn" onclick="UserForm.delete(<?= $row['user_id'] ?>,'<?= $row['user_name'] ?>')">
+                                        <div class="SnBtn jsUserOption" onclick="UserForm.delete(<?= $row['user_id'] ?>,'<?= $row['user_name'] ?>')">
                                             <i class="icon-trash"></i>
                                         </div>
                                     </div>

@@ -33,6 +33,8 @@ class UserController extends Controller
     }
 
     public function id(){
+        Authorization($this->connection,'usuario','modificar');
+
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
         if (!$body){
@@ -60,6 +62,8 @@ class UserController extends Controller
         echo json_encode($res);
     }
     public function update(){
+        Authorization($this->connection,'usuario','modificar');
+
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 
@@ -84,6 +88,8 @@ class UserController extends Controller
         echo json_encode($res);
     }
     public function updatePassword(){
+        Authorization($this->connection,'usuario','modificar');
+
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 

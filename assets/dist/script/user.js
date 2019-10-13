@@ -2,27 +2,41 @@ let  UserForm = {
     currentModeForm : 'create',
     modalName : 'userModalForm',
 
-    currentForm : document.getElementById('userForm'),
-    submitButton : document.getElementById('userFormSubmit'),
+    currentForm : null,
+    submitButton : null,
 
     loading : false,
     init() {
+        this.currentForm = document.getElementById('userForm');
+        this.submitButton = document.getElementById('userFormSubmit');
         this.list();
     },
     list(){
-
+        // location.reload();
     },
     setLoading(state){
         this.loading = state;
+        let jsUserOption = document.querySelectorAll('.jsUserOption');
+
         if (this.loading){
             if(this.submitButton){
                 this.submitButton.setAttribute('disabled','disabled');
                 this.submitButton.classList.add('loading');
+                if (jsUserOption) {
+                    jsUserOption.forEach(item => {
+                        item.setAttribute('disabled', 'disabled');
+                    });
+                }
             }
         } else {
             if(this.submitButton){
                 this.submitButton.removeAttribute('disabled');
                 this.submitButton.classList.remove('loading');
+                if (jsUserOption) {
+                    jsUserOption.forEach(item => {
+                        item.removeAttribute('disabled');
+                    });
+                }
             }
         }
     },
@@ -35,6 +49,7 @@ let  UserForm = {
 
     submit(event){
         event.preventDefault();
+        this.setLoading(true);
 
         let url = '';
         let userSendData = {};
@@ -70,8 +85,6 @@ let  UserForm = {
             } else {
                 SnModal.error({ title: 'Algo salió mal', content: res.message })
             }
-        }).catch(err => {
-            SnModal.error({ title: 'Algo salió mal', content: err.message })
         }).finally(e =>{
             this.setLoading(false);
         })
@@ -95,13 +108,12 @@ let  UserForm = {
                     }
                 }).then(res => {
                     if (res.success) {
-                        _list();
                         SnMessage.success({ content: res.message });
+                        location.reload();
+                        _list();
                     } else {
                         SnModal.error({ title: 'Algo salió mal', content: res.message })
                     }
-                }).catch(err => {
-                    SnModal.error({ title: 'Algo salió mal', content: err.message })
                 }).finally(e => {
                     _setLoading(false);
                 })
@@ -150,6 +162,7 @@ let  UserForm = {
     showModalUpdate(userId){
         this.clearForm();
 
+        this.setLoading(true);
         RequestApi.fetch('/api/user/id',{
             method: 'POST',
             body: {
@@ -162,15 +175,16 @@ let  UserForm = {
                 document.getElementById('userState').checked  = res.result.state;
                 document.getElementById('userUserRoleId').value  = res.result.user_role_id;
                 document.getElementById('userId').value = res.result.user_id;
-
                 SnModal.open(this.modalName);
             }else {
                 SnModal.error({ title: 'Algo salió mal', content: res.message })
             }
-        }).catch(err => {
-            SnModal.error({ title: 'Algo salió mal', content: err.message })
+        }).finally(e => {
+            this.setLoading(false);
         })
     }
 };
 
-UserForm.init();
+document.addEventListener('DOMContentLoaded',()=>{
+    UserForm.init();
+});

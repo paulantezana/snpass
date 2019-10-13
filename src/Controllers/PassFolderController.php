@@ -14,6 +14,7 @@ class PassFolderController extends Controller
     }
 
     public function search(){
+        Authorization($this->connection,'folder','listar');
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
         if (!$body){
@@ -30,6 +31,7 @@ class PassFolderController extends Controller
     }
 
     public function scroll(){
+        Authorization($this->connection,'folder','listar');
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 
@@ -47,6 +49,7 @@ class PassFolderController extends Controller
     }
 
     public function delete(){
+        Authorization($this->connection,'folder','eliminar');
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 
@@ -55,6 +58,7 @@ class PassFolderController extends Controller
     }
 
     public function id(){
+        Authorization($this->connection,'folder','listar');
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
         if (!$body){
@@ -67,6 +71,7 @@ class PassFolderController extends Controller
     }
 
     public function create(){
+        Authorization($this->connection,'folder','crear');
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 
@@ -81,6 +86,7 @@ class PassFolderController extends Controller
     }
 
     public function update(){
+        Authorization($this->connection,'folder','modificar');
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);
 

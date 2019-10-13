@@ -29,7 +29,7 @@
                         GROUP BY app.module';
         $stmt = $connection->prepare($sql);
         $stmt->execute([
-            ':user_role_id' => $_SESSION[SESS_DATA]['user_role_id'],
+            ':user_role_id' => $_SESSION[SESS_DATA]['user_role_id'] ?? 0,
             ':module' => $module,
             ':action' => $action,
         ]);

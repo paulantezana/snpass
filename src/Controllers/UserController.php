@@ -32,42 +32,6 @@ class UserController extends Controller
         ]);
     }
 
-    public function profile(){
-        $message = '';
-        $messageType = 'info';
-
-        if (isset($_POST['commitUser'])){
-            $currentDate = date('Y-m-d H:i:s');
-            $res = $this->userModel->UpdateById((int)$_SESSION[SESS_KEY],[
-                "updated_at" => $currentDate,
-                "updated_user_id" => $_SESSION[SESS_KEY],
-
-                'email' => $_POST['userEmail'] ?? '',
-                'user_name' => $_POST['userUserName'] ?? '',
-            ]);
-            $message = $res->message;
-            $messageType =  $res->success ? 'success' : 'error';
-
-        } else if (isset($_POST['commitChangePassword'])){
-            $currentDate = date('Y-m-d H:i:s');
-            $res = $this->userModel->UpdateById((int)$_SESSION[SESS_KEY],[
-                "updated_at" => $currentDate,
-                "updated_user_id" => $_SESSION[SESS_KEY],
-
-                'password' => sha1($_POST['userPassword'] ?? ''),
-            ]);
-            $message = $res->message;
-            $messageType =  $res->success ? 'success' : 'error';
-        }
-
-        $user = $this->userModel->GetById((int)$_SESSION[SESS_KEY]);
-        $this->render('admin/profile.php',[
-            'user' => $user->result,
-            'message' => $message,
-            'messageType' => $messageType,
-        ]);
-    }
-
     public function id(){
         $postData = file_get_contents("php://input");
         $body = json_decode($postData, true);

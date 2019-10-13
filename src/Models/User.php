@@ -52,11 +52,14 @@ class User extends Model
                 ':session_date' => $currentDate,
                 ':description' => 'in',
             ]);
-            if ($data['user_id'] < 2){
+            // if ($data['login_count'] < 20){
                 $this->UpdateById((int)$data['user_id'],[
                    'login_count' => ((int)$data['login_count']) + 1,
                 ]);
-            }
+            // }
+
+            $data['fa2_secret_enabled'] = !(strlen($data['fa2_secret']) === 0);
+            $data['fa2_secret'] = '';
 
             $res->result = $data;
             $res->success = true;
@@ -65,6 +68,7 @@ class User extends Model
         }
         return $res;
     }
+
     public function Insert($user, $userId){
         $res = new Result();
         try{
@@ -100,6 +104,51 @@ class User extends Model
             $res->message = 'El registro se inserto exitosamente';
         }catch (PDOException $exception){
             $res->message = $exception->getMessage() . ' [PDO]';
+        } catch (Exception $exception){
+            $res->message = $exception->getMessage();
+        }
+        return $res;
+    }
+
+    public function GetById(int $id) : Result {
+        $res = new Result();
+        try{
+            $sql = "SELECT user_id, email, avatar, user_name, state, login_count, updated_at, user_role_id, created_at FROM user WHERE user_id = :user_id LIMIT 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([":user_id"=>$id]);
+
+            $res->result = $stmt->fetch();
+            $res->success = true;
+        } catch (Exception $exception){
+            $res->message = $exception->getMessage();
+        }
+        return $res;
+    }
+
+    public function GetByIdFa2(int $id) : Result {
+        $res = new Result();
+        try{
+            $sql = "SELECT user_id, email, avatar, user_name, state, login_count, updated_at, user_role_id, created_at, fa2_secret FROM user WHERE user_id = :user_id LIMIT 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([":user_id"=>$id]);
+
+            $res->result = $stmt->fetch();
+            $res->success = true;
+        } catch (Exception $exception){
+            $res->message = $exception->getMessage();
+        }
+        return $res;
+    }
+
+    public function GetBy(string $columnName, $value) : Result {
+        $res = new Result();
+        try{
+            $sql = "SELECT user_id, email, avatar, user_name, state, login_count, updated_at, user_role_id, created_at FROM user WHERE $columnName = :$columnName LIMIT 1";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([":$columnName" => $value]);
+
+            $res->result = $stmt->fetch();
+            $res->success = true;
         } catch (Exception $exception){
             $res->message = $exception->getMessage();
         }

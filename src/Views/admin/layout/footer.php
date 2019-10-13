@@ -4,7 +4,7 @@
         <div class="AsideMenu-container">
             <div class="AsideHeader">
                 <div class="Branding">
-                    <a href="/" class="Branding-link">
+                    <a href="<?= URL_PATH ?>" class="Branding-link">
                         <img src="<?= URL_PATH ?>/assets/images/logo.png" alt="Logo" class="Branding-img">
                         <span class="Branding-name"><?= APP_NAME ?></span>
                     </a>
@@ -34,7 +34,7 @@
                 <?php endif; ?>
                 <?php if (ArrayFindIndexByColumn($asideMenu,'module','rol')): ?>
                     <li>
-                        <a href="<?= URL_PATH ?>/admin/role"> <i class="icon-code-fork"></i> <span>Roles</span> </a>
+                        <a href="<?= URL_PATH ?>/admin/role"> <i class="icon-code-fork"></i> <span>Roles <span class="SnTag success">nuevo</span></span> </a>
                     </li>
                 <?php endif; ?>
             </ul>

@@ -18,14 +18,17 @@
     --snErrorLight: #FF4D4F;
     --snError: #F5222D;
     --snErrorDark: #CF1322;
+    --snErrorInverse: white;
 
     --snSuccessLight: #73D13D;
     --snSuccess: #52C41A;
     --snSuccessDark: #389E0D;
+    --snSuccessInverse: white;
 
     --snWarningLight: #FFEC3D;
     --snWarning: #FADB14;
     --snWarningDark: #D4B106;
+    --snWarningInverse: #3d2501;
 
     // Colores de fondo
     --snColorBg: #EFF3F6;
@@ -47,5 +50,5 @@
     --snColorDarkest: #1a252d;
     --snColorDarkInverse: #b6bcc0;
 
-    --snColorDarkAlt: #22303a; // deprecated next version
+    //--snColorDarkAlt: #22303a; // deprecated next version
 }

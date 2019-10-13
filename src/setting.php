@@ -16,8 +16,10 @@
     define('VIEW_PATH', ROOT_DIR. '/src/Views');
 
     define('SESS_KEY','SkyId');
+    define('SESS_FA2','SkyIdFa2');
     define('SESS_DATA','SkyData');
     define('SESS_MENU','SkyMenu');
 
     define('APP_NAME','SnPass');
     define('APP_AUTHOR','SnPass');
+    define('APP_DESCRIPTION','SnPass');

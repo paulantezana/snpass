@@ -2,12 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= APP_NAME ?></title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap">
-    <link rel="shortcut icon" href="<?= URL_PATH ?>/assets/images/logo.png">
+    <?php require_once __DIR__ . '/../../head.php'; ?>
 
     <link rel="stylesheet" href="<?= URL_PATH ?>/assets/dist/css/admin.css">
     <link rel="stylesheet" href="<?= URL_PATH ?>/assets/dist/css/nprogress.css">
@@ -16,12 +11,9 @@
     <script src="<?= URL_PATH ?>/assets/dist/script/nprogress-min.js"></script>
     <script src="<?= URL_PATH ?>/assets/dist/script/sedna-min.js"></script>
     <script src="<?= URL_PATH ?>/assets/dist/script/conmon-min.js"></script>
-
-    <link rel="manifest" href="<?= URL_PATH ?>/assets/dist/manifest.json">
 </head>
-
 <body>
-<div class="AdminLayout" id="AdminLayout">
+<div class="AdminLayout SnAdminL2" id="AdminLayout">
     <div class="AdminLayout-header">
         <header class="Header">
             <div class="Header-left">
@@ -42,13 +34,21 @@
                     </li>
                     <li>
                         <div class="HeaderMenu-profile Header-action">
-                            <span><?= $_SESSION[SESS_DATA]['user_name'] ?? '' ?></span>
-                            <div class="SnAvatar-container">
-                                <img src="<?= URL_PATH ?>/assets/images/logo.png" alt="avatar" class="SnAvatar">
+                            <div class="SnAvatar">
+                                <img src="<?= URL_PATH ?>/assets/images/logo.png" alt="avatar">
                             </div>
                         </div>
                         <ul>
-                            <li><a href="<?= URL_PATH ?>/admin/user/profile"> <i class="icon-user"></i> Perfile</a></li>
+                            <li class="User-item">
+                                <a href="<?= URL_PATH ?>/admin/auth/profile" class="SnAvatar">
+                                    <img src="<?= URL_PATH ?>/assets/images/logo.png" alt="avatar">
+                                </a>
+                                <div class="small s-text-ellipsis">
+                                    <div class="User-title"><?= $_SESSION[SESS_DATA]['user_name'] ?? '' ?></div>
+                                    <div class="User-description"><?= $_SESSION[SESS_DATA]['email'] ?? '' ?></div>
+                                </div>
+                            </li>
+                            <li><a href="<?= URL_PATH ?>/admin/auth/profile"> <i class="icon-user"></i> Perfile</a></li>
                             <li><a href="<?= URL_PATH ?>/auth/logout"> <i class="icon-sign-out"></i> Salir</a></li>
                         </ul>
                     </li>

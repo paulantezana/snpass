@@ -33,7 +33,7 @@ const SnMenu = ({
             // Creando un nuevo elemento e insertando justo despues del enlace
             let iconToggleEle = document.createElement("i");
             iconToggleEle.classList.add("icon-down");
-            iconToggleEle.classList.add("Toggle");
+            iconToggleEle.classList.add("toggle");
             toggle.appendChild(iconToggleEle);
             toggle.classList.add('is-toggle')
 
@@ -272,7 +272,7 @@ const SnModalApi = () => {
                 });
             }
         }
-    }
+    };
 
     window.snModalApi = api
 };
@@ -369,8 +369,11 @@ class SnModal {
 // -------------------------------- MESSAGE --------------------------------
 const transitionLength = 700;
 let SnMessageContain = document.createElement('div');
-SnMessageContain.classList.add('SnMessageContain');
+SnMessageContain.classList.add('SnMessage-wrapper');
 class SnMessage {
+    static info({ content = '', duration = 3000 }) {
+        this.message(content, duration, 'info', 'icon-info');
+    }
     static success({ content = '', duration = 3000 }) {
         this.message(content, duration, 'success', 'icon-success');
     }
@@ -384,17 +387,17 @@ class SnMessage {
         if (!time || time === 'default') {
             time = 2000;
         }
-        let messagetEl = document.createElement('div');
-        messagetEl.classList.add('SnMessage', addClass, icon);
-        messagetEl.innerText = message;
-        SnMessageContain.prepend(messagetEl);
-        setTimeout(() => messagetEl.classList.add('open'));
+        let messageEl = document.createElement('div');
+        messageEl.classList.add('SnMessage', addClass, icon);
+        messageEl.innerText = message;
+        SnMessageContain.prepend(messageEl);
+        setTimeout(() => messageEl.classList.add('open'));
         setTimeout(
-            () => messagetEl.classList.remove('open'),
+            () => messageEl.classList.remove('open'),
             time
         );
         setTimeout(
-            () => SnMessageContain.removeChild(messagetEl),
+            () => SnMessageContain.removeChild(messageEl),
             time + transitionLength
         );
     }

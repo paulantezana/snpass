@@ -1,13 +1,11 @@
 <?php require_once __DIR__ . '/layout/header.php'; ?>
 <div class="SnContent">
-    <div class="SnCard SnMb-32">
+    <div class="SnCard">
         <div class="SnCard-body">
-            <?php if ($message ?? ''): ?>
-                <div class="SnAlert <?= $messageType ?? '' ?> SnMb-64"><?php echo $message ?? '' ?></div>
-            <?php endif; ?>
+            <?php require_once __DIR__ . '/partials/alertMessage.php' ?>
 
             <div class="SnGrid m-2 SnMb-64">
-                <div>
+                <div id="profileUser">
                     <strong>Perfil</strong>
                     <p>Su dirección de correo electrónico es su identidad en <?= APP_NAME ?> y se utiliza para iniciar sesión.</p>
                 </div>
@@ -27,7 +25,7 @@
                 </form>
             </div>
             <div class="SnGrid m-2">
-                <div>
+                <div id="profilePasswordChange">
                     <strong>Password</strong>
                     <p>Cambiar su contraseña también restablecerá su clave</p>
                 </div>

@@ -1,5 +1,6 @@
 <?php
 
+require_once ROOT_DIR . '/src/Helpers/TimeAuthenticator.php';
 
 class PageController extends Controller
 {
@@ -9,6 +10,7 @@ class PageController extends Controller
     {
         $this->connection = $connection;
     }
+
     public function login()
     {
         if (isset($_SESSION[SESS_KEY])){
@@ -16,13 +18,25 @@ class PageController extends Controller
         }
         $this->render('pages/login.php');
     }
+
     public function error404(){
-        $this->render('pages/404.php');
+        $message = $_GET['message'] ?? '';
+        $this->render('pages/404.php',[
+            'message' => $message
+        ]);
     }
+
     public function error403(){
-        $this->render('pages/403.php');
+        $message = $_GET['message'] ?? '';
+        $this->render('pages/403.php',[
+            'message' => $message
+        ]);
     }
+
     public function error500(){
-        $this->render('pages/500.php');
+        $message = $_GET['message'] ?? '';
+        $this->render('pages/500.php',[
+            'message' => $message
+        ]);
     }
 }

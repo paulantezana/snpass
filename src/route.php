@@ -7,6 +7,7 @@ define('PUBLIC_ATH',[
     '/403' => ['controller' => 'PageController', 'method' => 'error403'],
 
     '/auth/login' => ['controller' => 'AuthController', 'method' => 'login'],
+    '/auth/posLogin' => ['controller' => 'AuthController', 'method' => 'posLogin'],
     '/auth/logout' => ['controller' => 'AuthController', 'method' => 'logout'],
     '/auth/forgot' => ['controller' => 'AuthController', 'method' => 'forgot'],
     '/auth/forgotValidate' => ['controller' => 'AuthController', 'method' => 'forgotValidate'],
@@ -15,7 +16,9 @@ define('PUBLIC_ATH',[
 define('ADMIN_ATH',[
     // Dashboard
     '/' => ['controller' => 'AdminController', 'method' => 'index'],
-    '/user/profile' => ['controller' => 'UserController', 'method' => 'profile'],
+    '/auth/profile' => ['controller' => 'AuthController', 'method' => 'profile'],
+    '/auth/fa2' => ['controller' => 'AuthController', 'method' => 'fa2'],
+    '/auth/renderQrCode' => ['controller' => 'AuthController', 'method' => 'renderQrCode'],
 
     // User routes
     '/folder' => ['controller' => 'PassFolderController', 'method' => 'index'],

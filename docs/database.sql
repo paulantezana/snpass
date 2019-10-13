@@ -46,6 +46,7 @@ CREATE TABLE user(
     state boolean default true,
     login_count SMALLINT,
     last_update_temp_key DATETIME,
+    fa2_secret VARCHAR(64),
 
     user_role_id INT NOT NULL,
 

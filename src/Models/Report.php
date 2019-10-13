@@ -26,8 +26,8 @@ class Report
                         INNER JOIN pass_folder pf on pp.pass_folder_id = pf.pass_folder_id";
 
             $filterNumber = 0;
-            if ($filter['customerId'] ?? false){
-                $sql .= " WHERE pp.pass_customer_id = {$filter['customerId']}";
+            if ($filter['folderId'] ?? false){
+                $sql .= " WHERE pp.pass_folder_id = {$filter['folderId']}";
                 $filterNumber++;
             }
             if ($filter['userId'] ?? false){

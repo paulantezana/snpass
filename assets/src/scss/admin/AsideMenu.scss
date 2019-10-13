@@ -6,6 +6,7 @@ $menuBorderColor: var(--snColorDark);
   @extend %snList;
   height: calc(100vh - #{$headerHeight});
   background: var(--snColorDarker);
+  //overflow-y: auto;
   &-container{
     background: var(--snColorDarker);
     color: var(--snColorDarkInverse);
@@ -22,7 +23,7 @@ $menuBorderColor: var(--snColorDark);
     display: flex;
     align-items: center;
     [class*="icon-"] {
-      margin-right: 8px;
+      margin-right: 16px;
     }
     > span {
       flex: 1 1 auto;
@@ -34,7 +35,7 @@ $menuBorderColor: var(--snColorDark);
       background: $hoverMenuBg;
       color: $hoverMenuColor;
     }
-    .Toggle {
+    .toggle {
       margin: 0 0 0 8px;
     }
   }
@@ -58,7 +59,7 @@ $menuBorderColor: var(--snColorDark);
 .AsideMenu {
   ul {
     @extend %snList;
-    background: var(--snColorDarkAlt);
+    background: var(--snColorDarkest);
     a {
       padding-left: 50px;
     }
@@ -75,7 +76,7 @@ $menuBorderColor: var(--snColorDark);
   }
 }
 
-.AsideMenu-is-show {
+@mixin AsideMenuInSmall(){
   @include from(l) {
     .AsideMenu {
       &-divider {
@@ -98,7 +99,7 @@ $menuBorderColor: var(--snColorDark);
             background: $hoverMenuBg;
             display: none;
           }
-          .Toggle {
+          .toggle {
             display: none;
           }
           [class*="icon-"] {
@@ -133,6 +134,12 @@ $menuBorderColor: var(--snColorDark);
     }
   }
 }
+.SnAdminL1.AsideMenu-is-show{
+  @include AsideMenuInSmall();
+}
+.SnAdminL2:not(.AsideMenu-is-show){
+  @include AsideMenuInSmall();
+}
 
 // ----------------------------------------------------------------------------
 // Aside Header
@@ -161,8 +168,9 @@ $menuBorderColor: var(--snColorDark);
   }
 }
 
-.AsideMenu-is-show {
-  @include from(l) {
+// Layout
+@mixin AsideHeaderInSmall(){
+  @include from(l){
     .AsideHeader {
       padding: 0;
       display: flex;
@@ -177,4 +185,11 @@ $menuBorderColor: var(--snColorDark);
       }
     }
   }
+}
+
+.SnAdminL1.AsideMenu-is-show{
+  @include AsideHeaderInSmall();
+}
+.SnAdminL2:not(.AsideMenu-is-show){
+  @include AsideHeaderInSmall();
 }

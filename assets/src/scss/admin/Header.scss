@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     background: var(--snColorBgAlt);
-    border-bottom: 1px solid var(--snColorBorder);
+    box-shadow: 0 1px var(--snColorBorder);
 }
 
 #AsideMenu-toggle{

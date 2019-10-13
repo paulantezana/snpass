@@ -1,9 +1,7 @@
 <?php require_once __DIR__ . '/layout/header.php'; ?>
 
 <div class="Login">
-    <?php if (isset($message)): ?>
-        <div class="SnAlert error SnMb-32"><?php echo $message ?? '' ?></div>
-    <?php endif; ?>
+    <?php require_once __DIR__ . '/partials/alertMessage.php' ?>
     <p>Ingresa tu correo electrónico para buscar tu cuenta</p>
     <form action="<?= URL_PATH ?>/auth/forgot" method="post" class="SnForm">
         <div class="SnForm-item required">

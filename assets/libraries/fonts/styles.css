@@ -80,7 +80,7 @@
 .icon-minus:before {
   content: "\6e";
 }
-.icon-check:before {
+.icon-success:before {
   content: "\6f";
 }
 .icon-plus:before {
@@ -127,4 +127,13 @@
 }
 .icon-lock:before {
   content: "\76";
+}
+.icon-warning:before {
+  content: "\45";
+}
+.icon-info:before {
+  content: "\44";
+}
+.icon-error:before {
+  content: "\46";
 }

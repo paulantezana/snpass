@@ -1,11 +1,6 @@
-// const Service = {
-//    path: 'http://localhost/snpass/admin',
-//    apiPath: 'http://localhost/snpass/admin',
-// };
-
 const Service = {
-    path: 'https://snpass.paulantezana.com/admin',
-    apiPath: 'https://snpass.paulantezana.com/admin',
+    path: '/snpass',
+    apiPath: '/snpass/admin',
 };
 
 class RequestApi {
@@ -30,26 +25,17 @@ class RequestApi {
     };
 
     static fetch(path, options) {
-        const defaultOptions = {
-            headers: {
-                // Authorization: `Bearer ${tk}`,
-            },
-        };
-
         NProgress.start();
+        const newOptions = RequestApi.setHeaders({...options}); // format
 
-        const newOptions = RequestApi.setHeaders({...defaultOptions, ...options}); // format
-        const url = Service.apiPath + path; // uri request
-
-        // request api
-        return fetch(url, newOptions)
+        return fetch(Service.apiPath + path, newOptions)
             .then(response => {
-                NProgress.done();
                 return response.json(); // Return response
             }).catch(err => {
-                NProgress.done();
-                window.location.replace(Service.path  + '/500?message=' + err.message);
+                console.warn(err);
                 return err;
+            }).finally(e=>{
+                NProgress.done();
             })
     }
 
@@ -57,16 +43,14 @@ class RequestApi {
         const url = Service.apiPath + path; // uri request
 
         NProgress.start();
-
-        // request api
         return fetch(url, options)
             .then(response => {
-                NProgress.done();
                 return response.text();
             }).catch(err => {
-                NProgress.done();
-                window.location.replace(Service.path  + '/500?message=' + err.message);
+                console.warn(err);
                 return err;
+            }).finally(e => {
+                NProgress.done();
             })
     }
 }

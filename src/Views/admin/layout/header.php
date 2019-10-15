@@ -23,7 +23,7 @@
                 <ul class="HeaderMenu SnMenu">
                     <li>
                         <div class="Header-action">
-                            <input class="SnSwitch SnSwitch-ios" id="themeMode" type="checkbox" checked>
+                            <input class="SnSwitch SnSwitch-ios" id="themeMode" type="checkbox">
                             <label class="SnSwitch-btn" for="themeMode"></label>
                         </div>
                     </li>

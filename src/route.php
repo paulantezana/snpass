@@ -70,17 +70,8 @@ class Router{
 
     public function __construct()
     {
-        $this->setUri();
-        $this->matchRoute();
-    }
-
-    public function setUri()
-    {
         $this->url = URL;
-    }
-
-    protected function server(string $key, string $default = ""){
-        return array_key_exists($key,$_SERVER) ?  $_SERVER[$key] : $default;
+        $this->matchRoute();
     }
 
     private function matchRoute(){
@@ -113,10 +104,39 @@ class Router{
     }
 
     public function run(){
-        $database = new Database();
+        try{
+            $database = new Database();
 
-        $controller = new $this->controller($database->getConnection());
-        $method = $this->method;
-        $controller->$method();
+            $controller = new $this->controller($database->getConnection());
+            $method = $this->method;
+            $controller->$method();
+        } catch (PDOException $e){
+            echo $e->getMessage();
+            $this->log($e);
+        } catch (Exception $e){
+            $this->log($e);
+            header('Location: ' . URL_PATH . '/500?message=' . urlencode($e->getMessage()));
+        }
+    }
+
+    private function log($e){
+        $ipClient='';
+        $ipProxy='';
+        $ipServer='';
+
+        if (isset($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+        {
+            $ipClient=$_SERVER['HTTP_CLIENT_IP'];
+        }
+        if (isset($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+        {
+            $ipProxy=$_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
+        if (isset($_SERVER['REMOTE_ADDR']))
+        {
+            $ipServer=$_SERVER['REMOTE_ADDR'];
+        }
+        $error = 'PHP Fatal error | URL : '.$_SERVER['REQUEST_URI']."\n".'IP : '.$ipClient.' | '.$ipProxy.' | '.$ipServer."\n".' ERROR index : '. $e->getMessage()."\n".$e->getTraceAsString()."\n\n";
+        error_log($error);
     }
 }

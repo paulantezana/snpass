@@ -27,7 +27,7 @@ class PassFolderController extends Controller
     }
 
     public function index(){
-        $this->render('admin/pass/index.php');
+        $this->render('admin/passPassword.php');
     }
 
     public function scroll(){

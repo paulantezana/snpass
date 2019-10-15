@@ -29,7 +29,7 @@ class PassPasswordController extends Controller
         $passCustomer = $passCustomerModel->GetById((int)$passPassword->result['pass_folder_id'] ?? 0);
 
         ob_start();
-        $this->render('admin/pass/password.php',[
+        $this->render('admin/partials/password.php',[
             'passFolder' => $passCustomer->result,
             'passPassword' => $passPassword->result,
         ]);

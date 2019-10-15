@@ -76,7 +76,9 @@
         </div>
     </div>
 </div>
-    <script src="<?= URL_PATH ?>/assets/dist/script/userRole-min.js"></script>
+
+<script src="<?= URL_PATH ?>/assets/dist/script/userRole-min.js"></script>
+
 <?php
     require_once  __DIR__ . '/roleModalForm.php';
     require_once __DIR__ . '/layout/footer.php';

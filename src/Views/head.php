@@ -11,4 +11,4 @@
 <link rel="apple-touch-icon" href="<?= URL_PATH ?>/assets/images/logo512x512.png">
 
 <link rel="manifest" href="<?= URL_PATH ?>/assets/dist/manifest.json">
-<meta name="theme-color" content="#1890FF" />
+<meta name="theme-color" content="#F5222D" />

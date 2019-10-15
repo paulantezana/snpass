@@ -20,6 +20,6 @@
     define('SESS_DATA','SkyData');
     define('SESS_MENU','SkyMenu');
 
-    define('APP_NAME','SnPass');
-    define('APP_AUTHOR','SnPass');
-    define('APP_DESCRIPTION','SnPass');
+    define('APP_NAME','SkyPass');
+    define('APP_AUTHOR','Skynet');
+    define('APP_DESCRIPTION','SkyPass');

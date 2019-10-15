@@ -24,7 +24,9 @@ class User extends Model
                 ':password' => $password,
             ]);
 
-            if($stmt->rowCount() == 0){
+            $data = $stmt->fetch();
+
+            if(!$data){
                 $sql = 'SELECT * FROM user WHERE user_name = :user_name AND password = :password LIMIT 1';
                 $stmt = $this->db->prepare($sql);
 

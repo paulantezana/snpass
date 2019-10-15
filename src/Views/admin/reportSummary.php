@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/../layout/header.php'; ?>
+<?php require_once __DIR__ . '/layout/header.php'; ?>
 <div class="SnContent">
     <form action="" class="SnForm" method="get">
         <div class="SnToolbar">
@@ -116,4 +116,4 @@
     </div>
 </div>
 
-<?php require_once __DIR__ . '/../layout/footer.php' ?>
+<?php require_once __DIR__ . '/layout/footer.php' ?>

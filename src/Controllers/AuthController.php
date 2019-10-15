@@ -58,7 +58,7 @@ class AuthController extends Controller
 
         if(!$this->initApp($loginUser)){
             $this->logout();
-            $this->redirect('/403');
+            $this->redirect('/403?message=' .urlencode('Comuniquese con el administrador'));
             return;
         }
 
@@ -103,7 +103,7 @@ class AuthController extends Controller
                 if ($checkResult) {
                     if(!$this->initApp($userModelRes->result)){
                         $this->logout();
-                        $this->redirect('/403');
+                        $this->redirect('/403?message=' .urlencode('Comuniquese con el administrador'));
                         return;
                     }
                     $this->redirect('/admin/folder');

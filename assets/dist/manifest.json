@@ -1,6 +1,6 @@
 {
-  "short_name": "SnPass",
-  "name": "SnPass",
+  "short_name": "SkyPass",
+  "name": "SkyPass",
   "description": "Password manager",
   "icons": [
     {
@@ -26,6 +26,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#2a3b47",
-  "background_color": "#007BDF"
+  "theme_color": "#F5222D",
+  "background_color": "#F5222D"
 }

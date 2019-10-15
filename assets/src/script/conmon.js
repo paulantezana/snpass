@@ -1,6 +1,6 @@
 const Service = {
-    path: '/snpass',
-    apiPath: '/snpass/admin',
+    path: '/skypass',
+    apiPath: '/skypass/admin',
 };
 
 class RequestApi {

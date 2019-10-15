@@ -32,7 +32,7 @@ class ReportController extends Controller
         $customer = $passCustomerModel->GetAll();
         $passPassword = $this->reportModel->PaginateAudit($page,10, $filter);
 
-        $this->render('admin/pass/report.php',[
+        $this->render('admin/reportSummary.php',[
             'user' => $user->result,
             'customer' => $customer->result,
             'passPassword' => $passPassword->result,

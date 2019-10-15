@@ -13,8 +13,8 @@ CREATE TABLE app_authorization(
 
 CREATE TABLE user_role(
     user_role_id INT AUTO_INCREMENT NOT NULL,
-    updated_at DATETIME NOT NULL,
-    created_at DATETIME NOT NULL,
+    updated_at DATETIME,
+    created_at DATETIME,
     created_user_id INT,
     updated_user_id INT,
 
@@ -33,15 +33,15 @@ CREATE TABLE user_role_authorization(
 
 CREATE TABLE user(
     user_id INT AUTO_INCREMENT NOT NULL,
-    updated_at DATETIME NOT NULL,
-    created_at DATETIME NOT NULL,
+    updated_at DATETIME,
+    created_at DATETIME,
     created_user_id INT,
     updated_user_id INT,
 
     password varchar(64) NOT NULL,
-    email varchar(64) NOT NULL,
-    temp_key varchar(32) NOT NULL,
-    avatar varchar(64) NOT NULL,
+    email varchar(64),
+    temp_key varchar(32),
+    avatar varchar(64),
     user_name varchar(32) NOT NULL,
     state boolean default true,
     login_count SMALLINT,
@@ -59,8 +59,8 @@ CREATE TABLE user(
 
 CREATE TABLE pass_folder(
     pass_folder_id INT AUTO_INCREMENT NOT NULL,
-    updated_at DATETIME NOT NULL,
-    created_at DATETIME NOT NULL,
+    updated_at DATETIME,
+    created_at DATETIME,
     created_user_id INT,
     updated_user_id INT,
 

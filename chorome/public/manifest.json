@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "SnPass",
+    "version": "1.0",
+    "description": "Gestor de Notas",
+    "browser_action": {
+      "default_popup": "index.html",
+      "default_icon": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+      }
+    },
+    "permissions": ["storage", "activeTab"]
+  }
+  
